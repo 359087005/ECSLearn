@@ -1,19 +1,18 @@
 ﻿/****************************************************
-    文件：ViewComponents.cs
+    文件：SpriteComponents.cs
 	作者：ICE
     邮箱: 359087005@qq.com
     日期：#CreateTime#
-	功能：添加视图组件
+	功能：Nothing
 *****************************************************/
 
-using UnityEngine;
 using Entitas;
+using UnityEngine;
 
 namespace InteractionExample
 {
-
-    public class ViewComponents : IComponent
+    public class SpriteComponents : IComponent
     {
-        public Transform viewTransform;
+        public string spriteName;
     }
 }

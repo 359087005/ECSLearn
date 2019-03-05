@@ -7,11 +7,18 @@
 *****************************************************/
 
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
+
 namespace InteractionExample
 {
-    [Input]
+    /// <summary>
+    /// 鼠标事件
+    /// </summary>
+    [Input,Unique]
     public class MouseButtonComponents : IComponent
     {
         public MouseButton mouseButton;
+
+        public MouseButtonEvent mouseButtonEvent;
     }
 }

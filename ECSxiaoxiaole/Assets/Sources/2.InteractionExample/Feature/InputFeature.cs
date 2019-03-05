@@ -1,17 +1,20 @@
 ﻿/****************************************************
-    文件：MouseButtonComponents.cs
+    文件：InputFeature.cs
 	作者：ICE
     邮箱: 359087005@qq.com
     日期：#CreateTime#
 	功能：Nothing
 *****************************************************/
 
-using Entitas;
+using UnityEngine;
 namespace InteractionExample
 {
-    [Input]
-    public class MouseButtonEventComponents : IComponent
+    public class InputFeature : Feature
     {
-        public MouseButtonEvent mouseButtonEvent;
+        public InputFeature(Contexts context)
+        {
+            Add(new MouseSystem(context));
+            Add(new CreateSystem(context));
+        }
     }
 }

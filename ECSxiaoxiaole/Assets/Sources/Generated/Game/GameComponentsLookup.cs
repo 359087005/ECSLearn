@@ -9,14 +9,26 @@
 public static class GameComponentsLookup {
 
     public const int HelloWorldLog = 0;
+    public const int InteractionExamplePositionComponents = 1;
+    public const int InteractionExampleRotationComponents = 2;
+    public const int InteractionExampleSpriteComponents = 3;
+    public const int InteractionExampleViewComponents = 4;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 5;
 
     public static readonly string[] componentNames = {
-        "HelloWorldLog"
+        "HelloWorldLog",
+        "InteractionExamplePositionComponents",
+        "InteractionExampleRotationComponents",
+        "InteractionExampleSpriteComponents",
+        "InteractionExampleViewComponents"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(HelloWorld.LogComponent)
+        typeof(HelloWorld.LogComponent),
+        typeof(InteractionExample.PositionComponents),
+        typeof(InteractionExample.RotationComponents),
+        typeof(InteractionExample.SpriteComponents),
+        typeof(InteractionExample.ViewComponents)
     };
 }

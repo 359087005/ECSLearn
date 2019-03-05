@@ -9,26 +9,38 @@
 using UnityEngine;
 using Entitas;
 using System.Collections.Generic;
-
-public class AddViewSystem : ReactiveSystem<GameEntity>
+using Entitas.Unity;
+namespace InteractionExample
 {
-    public AddViewSystem(Contexts context) : base(context.game)
+    public class AddViewSystem : ReactiveSystem<GameEntity>
     {
+        private Transform parent;
+        private Contexts _context;
 
-    }
+        public AddViewSystem(Contexts context) : base(context.game)
+        {
+            parent = new GameObject("ViewParent").transform;
+        }
 
-    protected override void Execute(List<GameEntity> entities)
-    {
-        throw new System.NotImplementedException();
-    }
+        protected override bool Filter(GameEntity entity)
+        {
+            return !entity.hasInteractionExampleViewComponents;
+        }
 
-    protected override bool Filter(GameEntity entity)
-    {
-        throw new System.NotImplementedException();
-    }
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        {
+            return context.CreateCollector(GameMatcher.InteractionExampleViewComponents);
+        }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        throw new System.NotImplementedException();
+        protected override void Execute(List<GameEntity> entities)
+        {
+            foreach (GameEntity entity in entities)
+            {
+                GameObject go = new GameObject("View");
+                go.transform.SetParent(parent);
+                go.Link(entity);
+                entity.AddInteractionExampleViewComponents(go.transform);
+            }
+        }
     }
 }
