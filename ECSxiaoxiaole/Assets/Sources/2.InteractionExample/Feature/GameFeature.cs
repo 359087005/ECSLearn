@@ -16,6 +16,7 @@ namespace InteractionExample
         {
             Add(new AddViewSystem(contexts));
             Add(new RenderSpriteSystem(contexts));
+            Add(new PositionSystem(contexts));
         }
     }
 }

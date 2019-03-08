@@ -24,7 +24,11 @@ namespace InteractionExample
         {
             foreach (InputEntity intity in entities)
             {
-                gameContext.CreateEntity();
+                GameEntity gameEntity = gameContext.CreateEntity();
+                gameEntity.AddInteractionExampleSpriteComponents("photo");
+
+                Vector2 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                gameEntity.AddInteractionExamplePositionComponents(worldPos);
             }
                         
         }

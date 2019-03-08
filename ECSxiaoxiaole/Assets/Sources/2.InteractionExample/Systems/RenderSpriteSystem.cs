@@ -25,7 +25,8 @@ namespace InteractionExample
             {
                 Transform trans = entity.interactionExampleViewComponents.viewTransform;
                 SpriteRenderer sr = trans.GetComponent<SpriteRenderer>();
-                if (sr == null) trans.gameObject.AddComponent<SpriteRenderer>();
+                if (sr == null)
+                    sr = trans.gameObject.AddComponent<SpriteRenderer>();
                 sr.sprite = Resources.Load<Sprite>(entity.interactionExampleSpriteComponents.spriteName);
             }
         }

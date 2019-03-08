@@ -20,16 +20,17 @@ namespace InteractionExample
         public AddViewSystem(Contexts context) : base(context.game)
         {
             parent = new GameObject("ViewParent").transform;
+            _context = context;
         }
 
         protected override bool Filter(GameEntity entity)
         {
-            return !entity.hasInteractionExampleViewComponents;
+            return entity.hasInteractionExampleSpriteComponents && !entity.hasInteractionExampleViewComponents;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.InteractionExampleViewComponents);
+            return context.CreateCollector(GameMatcher.InteractionExampleSpriteComponents);
         }
 
         protected override void Execute(List<GameEntity> entities)
